@@ -24,8 +24,7 @@ const user = auth.currentUser;
 // const logInEl = document.querySelector('.login-section');
 const signUpEl = document.querySelector('#userProfileLoggedOut');
 const logOutEl = document.querySelector('#userProfileLoggedIn');
-const userLogged = document.querySelector('#userProfileLoggedInk')
-
+const userLogged = document.querySelector('#userProfileLoggedInk');
 
 const logOut = e => {
   signOut(auth)
@@ -35,7 +34,7 @@ const logOut = e => {
       setTimeout(
         () =>
           (window.location =
-            'https://millenialia.github.io/project-team-10-added-features/login.html'),
+            'https://volodya1989.github.io/Book-Store/login.html'),
         3000
       );
     })
@@ -54,7 +53,7 @@ const signUp = () => {
       setTimeout(
         () =>
           (window.location =
-            'https://millenialia.github.io/project-team-10-added-features/sign-up.html'),
+            'https://volodya1989.github.io/Book-Store/sign-up.html'),
         3000
       );
     })
@@ -69,7 +68,7 @@ onAuthStateChanged(auth, user => {
   if (user !== null) {
     console.log('User logged in.');
     signUpEl.classList.remove('is-active');
-    userLogged.classList.add('is-active');;
+    userLogged.classList.add('is-active');
     logOutEl.addEventListener('click', logOut);
   } else {
     console.log('No user.');

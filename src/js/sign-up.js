@@ -78,8 +78,7 @@ const onSubmit = e => {
         `${username}, you  successfully signed up and loginnig in now...!`
       );
       setTimeout(
-        () =>
-          (window.location = 'https://millenialia.github.io/project-team-10-added-features/'),
+        () => (window.location = 'https://volodya1989.github.io/Book-Store/'),
         3000
       );
     })
