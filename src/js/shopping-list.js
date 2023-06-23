@@ -21,7 +21,7 @@ const auth = getAuth(app);
 const loginSectionEl = document.querySelector('.login-section');
 
 const user = auth.currentUser;
-// const logInEl = document.querySelector('.login-section');
+// const userEmailEl = document.querySelector('.user-email'); робоча строка
 const signUpEl = document.querySelector('#userProfileLoggedOut');
 const logOutEl = document.querySelector('#userProfileLoggedIn');
 const userLogged = document.querySelector('#userProfileLoggedInk');
@@ -92,6 +92,8 @@ onAuthStateChanged(auth, user => {
       localStorage.setItem('number_of_books', JSON.stringify(null));
       shoppingListEl.innerHTML = '';
     }
+    signUpEl.style.display = 'none';
+    // userEmailEl.innerHTML = userEmail; робоча строка
     signUpEl.classList.remove('is-active');
     userLogged.classList.add('is-active');
     logOutEl.addEventListener('click', logOut);
@@ -101,7 +103,7 @@ onAuthStateChanged(auth, user => {
     const notLoggedIn = JSON.parse(localStorage.getItem('notLoggedInUser'));
     const number_of_books = Object.keys(notLoggedIn.shopping_list).length;
     shoppingListEl.innerHTML = number_of_books ? number_of_books : '';
-
+    logOutEl.style.display = 'none';
     userLogged.classList.remove('is-active');
     signUpEl.classList.add('is-active');
     signUpEl.addEventListener('click', signUp);

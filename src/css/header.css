@@ -242,7 +242,9 @@
   cursor: pointer;
   transition-duration: .3s;
 }
-
+/* #userProfileLoggedInk{
+  width: 250px;
+} */
 .custom-profile:hover {
   background-color: var(--sub-text-color);
 }
