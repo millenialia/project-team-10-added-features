@@ -24,13 +24,23 @@ const user = auth.currentUser;
 // const logInEl = document.querySelector('.login-section');
 const signUpEl = document.querySelector('#userProfileLoggedOut');
 const logOutEl = document.querySelector('#userProfileLoggedIn');
-const userLogged = document.querySelector('#userProfileLoggedInk')
+const userLogged = document.querySelector('#userProfileLoggedInk');
+const shoppingListEl = document.querySelector('.shopping-cart');
+let numberOfBooks = JSON.parse(localStorage.getItem('number_of_books'))
+  ? JSON.parse(localStorage.getItem('number_of_books'))
+  : null;
+let userEmail = JSON.parse(localStorage.getItem('_userEmail'))
+  ? JSON.parse(localStorage.getItem('_userEmail'))
+  : null;
 
+shoppingListEl.innerHTML = numberOfBooks ? numberOfBooks : '';
 
 const logOut = e => {
   signOut(auth)
     .then(() => {
       // Sign-out successful.
+      localStorage.setItem('_userEmail', JSON.stringify('notLoggedInUser'));
+
       Notiflix.Notify.success(`You are signing out...`);
       setTimeout(
         () =>
@@ -68,30 +78,40 @@ const signUp = () => {
 onAuthStateChanged(auth, user => {
   if (user !== null) {
     console.log('User logged in.');
+    userEmail = auth.currentUser.email;
+    console.log(userEmail);
     signUpEl.classList.remove('is-active');
-    userLogged.classList.add('is-active');;
+    userLogged.classList.add('is-active');
     logOutEl.addEventListener('click', logOut);
   } else {
     console.log('No user.');
+    localStorage.setItem('_userEmail', JSON.stringify('notLoggedInUser'));
     userLogged.classList.remove('is-active');
     signUpEl.classList.add('is-active');
     signUpEl.addEventListener('click', signUp);
   }
 });
-
-export const shopping_info = JSON.parse(
-  localStorage.getItem('client-info')
-) || {
+export const shopping_info = JSON.parse(localStorage.getItem(userEmail)) || {
   theme: 'light',
   shopping_list: {},
 };
 
+// export function saveShoppingList(listBooks) {
+//   console.log('saveShoppingList', listBooks);
+//   localStorage.setItem('client-info', JSON.stringify(listBooks));
+// }
+
 export function saveShoppingList(listBooks) {
-  console.log('saveShoppingList', listBooks);
-  localStorage.setItem('client-info', JSON.stringify(listBooks));
+  console.log('user', userEmail);
+  const number_of_books = Object.keys(listBooks.shopping_list).length;
+  shoppingListEl.innerHTML = number_of_books ? number_of_books : '';
+  localStorage.setItem('number_of_books', JSON.stringify(number_of_books));
+  console.log('number of books ', number_of_books);
+  localStorage.setItem(userEmail, JSON.stringify(listBooks));
 }
 
 export function removeShoppingListBoock(idBoock) {
+  console.log(shopping_info);
   for (const key in shopping_info.shopping_list) {
     if (key === idBoock) delete shopping_info.shopping_list[key];
   }
