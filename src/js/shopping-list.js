@@ -102,7 +102,7 @@ onAuthStateChanged(auth, user => {
     localStorage.setItem('_userEmail', JSON.stringify('notLoggedInUser'));
     const notLoggedIn = JSON.parse(localStorage.getItem('notLoggedInUser'));
     let number_of_books = null;
-    if (notLoggedIn.shopping_list === null) {
+    if (notLoggedIn === null) {
       number_of_books = '';
     } else {
       number_of_books = Object.keys(notLoggedIn.shopping_list).length;
