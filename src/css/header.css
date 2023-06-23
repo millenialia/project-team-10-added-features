@@ -311,6 +311,7 @@
   }
   .user-profile {
     align-items: center;
+    display: flex;
   }
   .custom-profile {
     display: flex;
