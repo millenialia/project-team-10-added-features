@@ -1,7 +1,7 @@
 // Змінна, яка буде в собі зберігати данні про кліента
 import { initializeApp } from 'firebase/app';
 import Notiflix from 'notiflix';
-
+import { getDatabase, ref, child, get } from 'firebase/database';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -19,8 +19,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 // const logOutEl = document.querySelector('.log-out');
 const loginSectionEl = document.querySelector('.login-section');
-
-const user = auth.currentUser;
+const dbRef = ref(getDatabase());
+const userNameEl = document.querySelector('.user-name');
 // const userEmailEl = document.querySelector('.user-email'); робоча строка
 const signUpEl = document.querySelector('#userProfileLoggedOut');
 const logOutEl = document.querySelector('#userProfileLoggedIn');
@@ -79,6 +79,23 @@ const signUp = () => {
 onAuthStateChanged(auth, user => {
   if (user !== null) {
     console.log('User logged in.');
+    const userId = user.uid;
+    get(child(dbRef, `users/${userId}`))
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          console.log('username', snapshot.val().username);
+          localStorage.setItem(
+            'username',
+            JSON.stringify(snapshot.val().username)
+          );
+          userNameEl.innerHTML = snapshot.val().username;
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
     userEmail = auth.currentUser.email;
     const objOfBooks = JSON.parse(localStorage.getItem(userEmail));
     if (objOfBooks === null) {
