@@ -5,11 +5,11 @@
   "homepage": "https://volodya1989.github.io/Book-Store/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /project-team-10-added-features/"
+    "build": "parcel build src/*.html --public-url /Book-Store/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Volodya1989/Book-Store"
+    "url": "git+https://github.com/goitacademy/project-team-10-added-features.git"
   },
   "keywords": [],
   "author": "Volodymyr Petrytsya <vpetrytsia@gmail.com>",

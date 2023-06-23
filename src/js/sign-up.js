@@ -69,6 +69,8 @@ const onSubmit = e => {
       // Signed in
 
       const user = userCredential.user;
+      localStorage.setItem('_userEmail', JSON.stringify(email));
+      localStorage.removeItem('login-form');
 
       set(ref(database, 'users/' + user.uid), {
         username,
