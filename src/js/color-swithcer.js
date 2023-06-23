@@ -112,7 +112,7 @@ window.addEventListener('load', function () {
 
 const userProfileLoggedInButton = document.getElementById("userProfileLoggedInk");
 const logoutModal = document.getElementById("logoutModal");
-const logoutButton = document.getElementById("userProfileLoggedIn");
+const logoutButton = logoutModal.querySelector(".custom-profile");
 
 let isLogoutModalOpen = false;
 
@@ -138,8 +138,10 @@ function closeLogoutModal() {
 }
 
 function logout() {
-  // якщо треба, якщо ні просто видаліть цю функцію
+  // Додайте код для виходу з облікового запису або виконайте необхідні дії
 }
+
+
 
 
 
