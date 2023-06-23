@@ -40,6 +40,7 @@ const logOut = e => {
     .then(() => {
       // Sign-out successful.
       localStorage.setItem('_userEmail', JSON.stringify('notLoggedInUser'));
+      shoppingListEl.innerHTML = '';
 
       Notiflix.Notify.success(`You are signing out...`);
       setTimeout(
@@ -79,13 +80,28 @@ onAuthStateChanged(auth, user => {
   if (user !== null) {
     console.log('User logged in.');
     userEmail = auth.currentUser.email;
-    console.log(userEmail);
+    const objOfBooks = JSON.parse(localStorage.getItem(userEmail));
+    if (objOfBooks === null) {
+      shoppingListEl.innerHTML = '';
+    } else {
+      const number_of_books = Object.keys(objOfBooks.shopping_list).length;
+      shoppingListEl.innerHTML = number_of_books ? number_of_books : '';
+    }
+
+    if (!objOfBooks) {
+      localStorage.setItem('number_of_books', JSON.stringify(null));
+      shoppingListEl.innerHTML = '';
+    }
     signUpEl.classList.remove('is-active');
     userLogged.classList.add('is-active');
     logOutEl.addEventListener('click', logOut);
   } else {
     console.log('No user.');
     localStorage.setItem('_userEmail', JSON.stringify('notLoggedInUser'));
+    const notLoggedIn = JSON.parse(localStorage.getItem('notLoggedInUser'));
+    const number_of_books = Object.keys(notLoggedIn.shopping_list).length;
+    shoppingListEl.innerHTML = number_of_books ? number_of_books : '';
+
     userLogged.classList.remove('is-active');
     signUpEl.classList.add('is-active');
     signUpEl.addEventListener('click', signUp);
@@ -95,11 +111,6 @@ export const shopping_info = JSON.parse(localStorage.getItem(userEmail)) || {
   theme: 'light',
   shopping_list: {},
 };
-
-// export function saveShoppingList(listBooks) {
-//   console.log('saveShoppingList', listBooks);
-//   localStorage.setItem('client-info', JSON.stringify(listBooks));
-// }
 
 export function saveShoppingList(listBooks) {
   console.log('user', userEmail);
