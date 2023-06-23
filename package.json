@@ -2,17 +2,17 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://millenialia.github.io/project-team-10-added-features",
+  "homepage": "https://volodya1989.github.io/Book-Store/",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /project-team-10-added-features/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/project-team-10-added-features.git"
+    "url": "git+https://github.com/Volodya1989/Book-Store"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Volodymyr Petrytsya <vpetrytsia@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
