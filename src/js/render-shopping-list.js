@@ -104,7 +104,7 @@ function onClickDel(event) {
   cardDel.remove();
   if (!--number_of_books) {
     plug.style.display = 'block';
-    localStorage.clear();
+    // localStorage.clear();
     shopping_info;
   }
 }

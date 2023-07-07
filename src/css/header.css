@@ -162,6 +162,9 @@
   .user-profile.is-active {
       display: flex;
     }
+    .custom-profile{
+      display: none;
+    }
 }
 
 .user-profile.logged-in {
@@ -176,6 +179,10 @@
 @media screen and (min-width: 768px) {
   .user-profile.logged-in.is-active {
       display: flex;
+    }
+
+    .custom-profile{
+      display: none;
     }
 }
 
@@ -193,45 +200,69 @@
   font-size: 16px;
 }
 /* КНОПА ЛОГАУТ */
+
+.logout-btns {
+  display: flex;
+  align-items: flex-start;
+}
+
+.user-profile-container {
+  position: relative;
+}
+
+.user-profile {
+  margin-right: 10px;
+}
+
+.modal-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 25px;
+  border-radius: 18px;
+ 
+}
+
+.modal-content.light-theme{
+  box-shadow: 4px 3px 2px 1px rgba(34, 34, 35, 0.2);
+}
+.modal-content.dark-theme{
+  box-shadow: 4px 3px 2px 1px rgba(128, 128, 130, 0.2);
+}
+
 .custom-profile {
   width: 184px;
   height: 48px;
   background: var(--bg-color);
   border: 1.5px solid var(--main-text-color);
   border-radius: 18px;
-  /* display: none; */
+  display: none;
   align-items: center;
   padding: 0 14px;
   cursor: pointer;
-  transition-duration: .2s;
-  margin-left: 24px;
+  transition-duration: .3s;
 }
-
-.custom-profile:hover{
-  background-color: var(--extra-border-color-40);
+/* #userProfileLoggedInk{
+  width: 250px;
+} */
+.custom-profile:hover {
+  background-color: var(--sub-text-color);
 }
 
 .custom-signup-text {
   font-size: 14px;
   line-height: 18px;
   color: var(--main-text-color);
-  margin-right: auto;
+  margin-right: 10px;
 }
 
 .custom-other-svg {
+  width: 13.33px;
+  height: 10px;
   margin-left: auto;
 }
 
 
-.modal {
-  display: none;
-}
-
-
-.logout-btns{
-  display: flex;
-  flex-direction: column;
-}
 /* Кінець кнопи логаут */
 
 .menu-button {
@@ -269,6 +300,7 @@
     display: flex;
     margin-left: 14px;
   }
+  
 }
 
 @media only screen and (min-width: 750px) {
@@ -281,13 +313,12 @@
   }
   .user-profile {
     align-items: center;
-  }
-  .custom-profile{
     display: flex;
   }
-  .user-profile.logged-in{
-
+  .custom-profile {
+    display: flex;
   }
+  
   .menu-button {
     display: none;
   }

@@ -6,11 +6,16 @@ export const shopping_info = JSON.parse(
 };
 
 export function saveShoppingList(listBooks) {
-  console.log('saveShoppingList', listBooks);
-  localStorage.setItem('client-info', JSON.stringify(listBooks));
+  console.log('user', userEmail);
+  const number_of_books = Object.keys(listBooks.shopping_list).length;
+  shoppingListEl.innerHTML = number_of_books ? number_of_books : '';
+  localStorage.setItem('number_of_books', JSON.stringify(number_of_books));
+  console.log('number of books ', number_of_books);
+  localStorage.setItem(userEmail, JSON.stringify(listBooks));
 }
 
 export function removeShoppingListBoock(idBoock) {
+  console.log(shopping_info);
   for (const key in shopping_info.shopping_list) {
     if (key === idBoock) delete shopping_info.shopping_list[key];
   }
