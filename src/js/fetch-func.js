@@ -1,4 +1,5 @@
-
+// Треба описати функції
+// Потім їх можна буде використовувати при імпорті в нших файлах
 import axios from 'axios';
 import Notiflix from 'notiflix';
 

@@ -1,4 +1,5 @@
-
+// Логіка, яка рендерить список категорій
+// Визиваеться одразу в index.js
 import { fetchAllCategories } from './fetch-func';
 import { shopping_info } from './shopping-list';
 
