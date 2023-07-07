@@ -1,4 +1,4 @@
-// Слайдер для Support Ukrain
+
 import { support_array } from './support-data';
 
 const supportEl = document.querySelector('ul.support-list');
@@ -21,8 +21,6 @@ supportEl.insertAdjacentHTML('afterbegin', supportUkraineMarkup);
 function addNum(value) {
   return value.toString().padStart(2, '0');
 }
-
-// ///////////
 
 const supportBtn = document.querySelector('.js-sup-btn');
 let isScrolledToEnd = false;
